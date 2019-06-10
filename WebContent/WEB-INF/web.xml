@@ -6,10 +6,18 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>servletInsertAluno</servlet-name>
-    <servlet-class>servlet.insertAluno</servlet-class>
+    <servlet-class>servlet.insereAluno</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>servletInsertAluno</servlet-name>
     <url-pattern>/insereAluno</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>servletInsertProfessor</servlet-name>
+    <servlet-class>servlet.insereProfessor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletInsertProfessor</servlet-name>
+    <url-pattern>/insereProfessor</url-pattern>
   </servlet-mapping>
 </web-app>

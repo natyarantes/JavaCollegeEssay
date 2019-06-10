@@ -20,11 +20,11 @@ public class alunoDB {
 		String strSQL;
 		
 		try {
-			strSQL = "INSERT INTO ALUNO (MATRICULA, NOME, ENDERECO, TELEFONE) VALUES (" +
-					aluno.getMatricula() + "," +
-					aluno.getNome() + "," +
-					aluno.getEndereco() + "," +
-					aluno.getTelefone() + "," +
+			strSQL = "INSERT INTO ALUNO (MATRICULA, NOME, ENDERECO, TELEFONE) VALUES (' " +
+					aluno.getMatricula() + "', '" +
+					aluno.getNome() + "','" +
+					aluno.getEndereco() + "','" +
+					aluno.getTelefone() + "'" +
 					")";
 			
 			psComm = dbConn.prepareStatement(strSQL);

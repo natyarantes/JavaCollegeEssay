@@ -8,10 +8,10 @@ public class dbConnect {
 	Connection dbConn;
 	
 	public boolean openConn() {
-		String url = "jdbc:mysql//localhost/sisdiario?user=root&password=root1234";
+		String url = "jdbc:mysql://localhost/sisdiario?user=root&password=root1234";
 		
 		try {
-			Class.forName("com.mysql.jdcb.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			dbConn = DriverManager.getConnection(url);
 			return true;
 		}

@@ -7,29 +7,31 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import bd.dbConnect;
-import model.Aluno;
-import bd.alunoDB;
+import bd.professorDB;
+import model.Professor;
 
 
-public class insereAluno extends HttpServlet {
+public class insereProfessor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String matriculaAluno, nomeAluno, enderecoAluno, telefoneAluno;
+		String matriculaProfessor, nomeProfessor, enderecoProfessor, telefoneProfessor;
 		PrintWriter out;
 		
 		response.setContentType("text/html;charset=UTF-8");
 		out = response.getWriter();
 		
-		matriculaAluno = request.getParameter("matriculaAluno");
-		nomeAluno = request.getParameter("nomeAluno");
-		enderecoAluno = request.getParameter("enderecoAluno");
-		telefoneAluno = request.getParameter("telefoneAluno");
-
-
+		matriculaProfessor = request.getParameter("matriculaProfessor");
+		nomeProfessor = request.getParameter("nomeProfessor");
+		enderecoProfessor = request.getParameter("enderecoProfessor");
+		telefoneProfessor = request.getParameter("telefoneProfessor");
+		
+		
 		out.print("<!DOCTYPE html>\n" + 
 				"<html>\n" + 
 				"	<head>\n" + 
@@ -49,40 +51,38 @@ public class insereAluno extends HttpServlet {
 				"			</div>\n" + 
 				"			<div class=\"row mt-5\">");
 		
-		
 		try {
 			dbConnect connection = new dbConnect();
-			Aluno aluno = new Aluno();
-			alunoDB alunodb = new alunoDB();
+			Professor professor = new Professor();
+			professorDB professorDB = new professorDB();
 			
-			aluno.setMatricula(matriculaAluno);
-			aluno.setNome(nomeAluno);
-			aluno.setEndereco(enderecoAluno);
-			aluno.setTelefone(telefoneAluno);
+			professor.setMatricula(matriculaProfessor);
+			professor.setNome(nomeProfessor);
+			professor.setEndereco(enderecoProfessor);
+			professor.setTelefone(telefoneProfessor);
 			
-			if (connection.openConn()) {
-				alunodb.setConn(connection.getConn());
+			if(connection.openConn()) {
+				professorDB.setConn(connection.getConn());
 				
-				if(alunodb.insertRecord(aluno)) {
-					out.println("<p>Aluno inserido com sucesso.</p><br><br>");
-					out.println("<a href='cadastraAluno.html'>Voltar</a>");
+				if(professorDB.insertRecord(professor)) {
+					out.println("<p>Professor inserido com sucesso</p></br></br>");
+					out.println("<a href='cadastraProfessor.html'>Voltar</a>");
 				}
 				else {
-					out.println("<p>Não foi possível inserir o aluno.</p>");
+					out.println("<p>Não foi possível inserir o professor.</p>");
 				}
-				
 			}
 			else {
-				out.println("Nao foi possivel estabelecer conexao com o  banco de dados");
+				out.println("Não foi possível estabelecer conexão com o banco de dados.");
 			}
-			connection.closeConn();
+			
 			
 		}
+		
 		catch (Exception e) {
 			e.printStackTrace();
-			out.println("Erro ao inserir aluno.");
+			out.println("Erro ao inserir professor");
 		}
-		
 		out.println("</div>\n" + 
 				"\n" + 
 				"	</body>\n" + 
