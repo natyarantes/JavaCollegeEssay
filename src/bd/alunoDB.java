@@ -80,15 +80,16 @@ public class alunoDB {
 			try {
 				//Aluno alunoObj = new Aluno();
 				
-				strSQL = "UPDATE ALUNO SET MATRICULA = " + aluno.getMatricula() + 
-						", NOME = " + aluno.getNome() + 
-						", ENDERECO = " + aluno.getEndereco() +
-						", TELEFONE = " + aluno.getTelefone() + 
-						"WHERE MATRICULA = " + aluno.getMatricula() + ";";
+				strSQL = "UPDATE ALUNO SET MATRICULA = '" + aluno.getMatricula() + 
+						"', NOME = '" + aluno.getNome() + 
+						"', ENDERECO = '" + aluno.getEndereco() +
+						"', TELEFONE = '" + aluno.getTelefone() + 
+						"' WHERE MATRICULA = '" + aluno.getMatricula() + "';";
 				
 				psComm = dbConn.prepareStatement(strSQL);
 				psComm.executeUpdate();
 				
+				System.out.println(strSQL);
 				return findRecord(aluno.getMatricula());
 				
 				

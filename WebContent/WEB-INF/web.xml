@@ -20,4 +20,24 @@
     <servlet-name>servletInsertProfessor</servlet-name>
     <url-pattern>/insereProfessor</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>servletProcuraAluno</servlet-name>
+    <servlet-class>servlet.procuraAluno</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletProcuraAluno</servlet-name>
+    <url-pattern>/procuraAluno</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>servletEditaAluno</servlet-name>
+    <servlet-class>servlet.editaAluno</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletEditaAluno</servlet-name>
+    <url-pattern>/editaAluno</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
