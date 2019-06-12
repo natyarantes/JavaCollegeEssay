@@ -52,4 +52,17 @@
     <servlet-name>servletAvaliaAluno</servlet-name>
     <url-pattern>/avaliaAluno</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>servletInsereTurma</servlet-name>
+    <servlet-class>servlet.insereTurma</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletInsereTurma</servlet-name>
+    <url-pattern>/insereTurma</url-pattern>
+  </servlet-mapping>
+  
+  
+  
 </web-app>
