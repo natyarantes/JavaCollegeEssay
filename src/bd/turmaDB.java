@@ -18,19 +18,32 @@ public class turmaDB {
 	}
 	
 	//select - RETORNA TODOS OS DADOS DA TURMA
-//	public boolean findTurma (Turma idTurma) {
-//		
-//		String strSQL;
-//		
-//		try {
-//			strSQL = "SELECT * FROM TURMA WHERE";
-//		}
-//		catch (Exception e) {
-//			e.printStackTrace();
-//			return false;
-//		}
-//		
-//	}
+	public ArrayList<Turma> listaTurma () {
+		
+		String strSQL = "SELECT DISTINCT NOMETURMA FROM TURMA;";
+		
+		try {
+			ArrayList<Turma> turmas = new ArrayList<Turma>();
+			
+			psComm = dbConn.prepareStatement(strSQL);
+			rsRecords = psComm.executeQuery();
+			
+			while (rsRecords.next()) {
+				Turma turmaObj = new Turma();
+				
+				turmaObj.setNome(rsRecords.getString(1));
+				
+				turmas.add(turmaObj);
+			}
+			
+			return turmas;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
 	
 	//insert
 	public boolean createTurma(String[] aluno, String matriculaProfessor, String nomeTurma) {

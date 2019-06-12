@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 
 /**
  * CLASSE ALUNO 
@@ -18,7 +17,7 @@ public class Aluno {
 	String matricula;
 	String endereco;
 	String telefone;
-	ArrayList<Nota> Nota;
+	int Nota;
 	
 	public Aluno() {}
 	
@@ -47,10 +46,10 @@ public class Aluno {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public ArrayList<Nota> getNota() {
+	public int getNota() {
 		return Nota;
 	}
-	public void setNota(ArrayList<Nota> nota) {
+	public void setNota(int nota) {
 		Nota = nota;
 	}
 	@Override

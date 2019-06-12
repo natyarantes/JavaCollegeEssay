@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="bd.turmaDB"%>
-<%@page import="model.Turma"%>
+<%@page import="bd.relatorioDB"%>
+<%@page import="model.Aluno"%>
 <%@page import="bd.dbConnect"%>
 <%@page import="java.io.PrintWriter" %>
 <%@page import="java.util.ArrayList" %>
@@ -21,12 +21,12 @@
 		<%
 			
 			dbConnect conn = new dbConnect();
-			turmaDB turmadb = new turmaDB();;
-			ArrayList<Turma> turmas = new ArrayList<Turma>();
+			relatorioDB reportdb = new relatorioDB();
+			ArrayList<Aluno> alunos = new ArrayList<Aluno>();
 			
 			if(conn.openConn()){
-				turmadb.setConn(conn.getConn());
-				turmas = turmadb.listaTurma();
+				reportdb.setConn(conn.getConn());
+				alunos = reportdb.notaTotalPorAluno(request.getParameter("turma"));
 			}
 			else {
 				out.println("<p>Falha na conexão com o banco de dados.</p>");
@@ -41,15 +41,20 @@
 				</div>
 			</div>
 			<div class="row mt-5">
-				<form method="get" action="/exibeRelatorioProfessor.jsp" target="_parent">
-					<label for="">Selecione a turma:</label><br>
-					<select class="form-control form-control-lg" name="turma">
-						<% for (int i = 0; i < turmas.size(); i++){ 
-							out.println("<option value='" + turmas.get(i).getNome() + "'> " + turmas.get(i).getNome() + "</option>");
-						}; %>
-					</select>
-					<button class="btn btn-primary topMaisVinte" type="submit">Gerar relatório</button>
-				</form>
+				<table class="table">
+					<thead>
+						<th>Aluno</th>
+						<th>Total</th>
+						<th>Resultado</th>
+					</thead>
+					<tbody>
+						<%
+							for(int i = 0; i < alunos.size(); i++){
+								out.println("<tr><td>"+ alunos.get(i).getNome() + "</td><td>"+ alunos.get(i).getNota() +"</td><td class='"+ (alunos.get(i).getNota() >= 60 ? "text-success": "text-danger") +"'>"+ (alunos.get(i).getNota() >= 60 ? "Aprovado": "Reprovado") +"</td></tr>");
+							}
+						%>
+					</tbody>
+				</table>
        
        		</div>
 
