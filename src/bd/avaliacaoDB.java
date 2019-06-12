@@ -12,15 +12,16 @@ public class avaliacaoDB {
 	}
 	
 	//insert
-	public boolean insereAvaliacao(String matricula, int tipoNota, int valorNota) {
+	public boolean insereAvaliacao(String matricula, int tipoNota, int valorNota, String turma) {
 		
-		String strSQL = "INSERT INTO AVALIACAO (VALORNOTA, IDALUNO, IDTIPONOTA) VALUES (?, ?, ?);";	
+		String strSQL = "INSERT INTO AVALIACAO (VALORNOTA, IDALUNO, IDTIPONOTA, NOMETURMA) VALUES (?, ?, ?, ?);";	
 		
 		try {
 			pst = dbConn.prepareStatement(strSQL);
 			pst.setInt(1, valorNota);
 			pst.setString(2, matricula);
 			pst.setInt(3, tipoNota);
+			pst.setString(4, turma);
 			pst.executeUpdate();
 			return true;
 		}

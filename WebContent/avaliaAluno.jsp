@@ -3,9 +3,11 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="model.Nota"%>
 <%@page import="model.Aluno"%>
+<%@page import="model.Turma"%>
 <%@page import="bd.dbConnect"%>
 <%@page import="bd.notaDB"%>
 <%@page import="bd.alunoDB"%>
+<%@page import="bd.turmaDB"%>
 <%@page import="java.io.PrintWriter" %>
 <%@page import="java.util.ArrayList" %>
 <!DOCTYPE html>
@@ -25,18 +27,21 @@
 			dbConnect conn = new dbConnect();
 			notaDB notadb = new notaDB();
 			alunoDB alunodb = new alunoDB();
+			turmaDB turmadb = new turmaDB();
 			ArrayList<Nota> notas = new ArrayList<Nota>();
 			ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+			ArrayList<Turma> turmas = new ArrayList<Turma>();
 			
 			if(conn.openConn()){
 				
 				notadb.setConn(conn.getConn());
-				
 				notas = notadb.listaTipoNota();
 				
 				alunodb.setConn(conn.getConn());
-				
 				alunos = alunodb.listAluno();
+				
+				turmadb.setConn(conn.getConn());
+				turmas = turmadb.listaTurma();
 			}
 			else {
 				out.println("<p>Falha na conexão com o banco de dados.</p>");
@@ -53,13 +58,19 @@
 			<div class="row mt-5">
 				<form method="post" action="/avaliaAluno" target="_parent">
 					<div class="form-group">
-              <label for="">Selecione o aluno:</label><br>
-							<select class="form-control form-control-lg" name="alunoMatricula">
-								  <% for (int i = 0; i < alunos.size(); i++){ 
-									out.println("<option value='" + alunos.get(i).getMatricula() + "'> " + alunos.get(i).getNome() + "</option>");
-									}; %>
-						    </select>
+              			<label for="">Selecione o aluno:</label><br>
+						<select class="form-control form-control-lg" name="alunoMatricula">
+							  <% for (int i = 0; i < alunos.size(); i++){ 
+								out.println("<option value='" + alunos.get(i).getMatricula() + "'> " + alunos.get(i).getNome() + "</option>");
+								}; %>
+					    </select>
 					</div>
+					<label for="">Selecione a turma:</label><br>
+					<select class="form-control form-control-lg" name="turma">
+						<% for (int i = 0; i < turmas.size(); i++){ 
+							out.println("<option value='" + turmas.get(i).getNome() + "'> " + turmas.get(i).getNome() + "</option>");
+						}; %>
+					</select>
 					<div class="form-group">
               			<label for="">Selecione o tipo de nota:</label><br>
 							<select class="form-control form-control-lg" name="selectTipoNota">

@@ -17,7 +17,7 @@ public class avaliaAluno extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String matricula;
+		String matricula, turma;
 		int idTipoNota, valorNota;
 		PrintWriter out;
 
@@ -27,6 +27,7 @@ public class avaliaAluno extends HttpServlet {
 		matricula = request.getParameter("alunoMatricula");
 		idTipoNota = Integer.parseInt(request.getParameter("selectTipoNota"));
 		valorNota = Integer.parseInt(request.getParameter("notaAluno"));
+		turma = request.getParameter("turma");
 
 		out.print("<!DOCTYPE html>\n" +
 				"<html>\n" +
@@ -55,7 +56,7 @@ public class avaliaAluno extends HttpServlet {
 			if(connection.openConn()) {
 				avaliacaodb.setConn(connection.getConn());
 
-				if(avaliacaodb.insereAvaliacao(matricula, idTipoNota, valorNota)) {
+				if(avaliacaodb.insereAvaliacao(matricula, idTipoNota, valorNota, turma)) {
 					out.println("Nota registrada com sucesso.");
 				}
 				else {
