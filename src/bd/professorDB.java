@@ -111,10 +111,10 @@ public class professorDB {
 			try {
 				
 				strSQL = "UPDATE PROFESSOR SET MATRICULA = " + professor.getMatricula() + 
-						", NOME = " + professor.getNome() + 
-						", ENDERECO = " + professor.getEndereco() +
-						", TELEFONE = " + professor.getTelefone() + 
-						"WHERE MATRICULA = " + professor.getMatricula() + ";";
+						", NOME = '" + professor.getNome() + 
+						"', ENDERECO = '" + professor.getEndereco() +
+						"', TELEFONE = '" + professor.getTelefone() + 
+						"' WHERE MATRICULA = " + professor.getMatricula() + ";";
 				
 				psComm = dbConn.prepareStatement(strSQL);
 				psComm.executeUpdate();

@@ -17,7 +17,7 @@ public class relatorioDB {
 
 
 	public ArrayList<Aluno> notaTotalPorAluno(String idTurma){
-		String strSQL = "select aluno.nome, sum(avaliacao.valornota) from turma inner join aluno on turma.aluno_matricula = aluno.matricula inner join avaliacao on turma.nometurma = avaliacao.nometurma where turma.nometurma = ? group by aluno.matricula;";
+		String strSQL = "select aluno.nome, sum(avaliacao.valornota) from turma inner join aluno on turma.aluno_matricula = aluno.matricula inner join avaliacao on avaliacao.idaluno = turma.aluno_matricula where turma.nometurma = ? group by aluno.matricula;";
 		ArrayList<Aluno> alunos = new ArrayList<Aluno>();
 		
 		try {

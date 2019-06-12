@@ -65,4 +65,24 @@
   
   
   
+  <servlet>
+    <servlet-name>servletProcuraProfessor</servlet-name>
+    <servlet-class>servlet.procuraProfessor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletProcuraProfessor</servlet-name>
+    <url-pattern>/procuraProfessor</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>servletEditaProfessor</servlet-name>
+    <servlet-class>servlet.editaProfessor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletEditaProfessor</servlet-name>
+    <url-pattern>/editaProfessor</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
