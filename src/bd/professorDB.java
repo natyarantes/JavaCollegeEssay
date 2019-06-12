@@ -1,6 +1,7 @@
 package bd;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import model.Professor;
 
@@ -39,7 +40,7 @@ public class professorDB {
 	}
 	
 	
-	//select
+	//select por matricula
 	public Professor findRecord(String matricula) {
 		
 		String strSQL;
@@ -59,6 +60,36 @@ public class professorDB {
 			professorObj.setTelefone(rsRecords.getString(4));
 			
 			return professorObj;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	//select todos os professores
+	
+	public ArrayList<Professor> listaProfessor() {
+		String strSQL;
+		
+		try {
+			strSQL = "SELECT Matricula, Nome FROM PROFESSOR ;";
+			ArrayList<Professor> professores = new ArrayList<Professor>();
+			
+			psComm = dbConn.prepareStatement(strSQL);
+			rsRecords = psComm.executeQuery();
+			rsRecords.next();
+			
+			while (rsRecords.next()) {
+				Professor professorObj = new Professor();
+				
+				professorObj.setMatricula(rsRecords.getString(1));
+				professorObj.setNome(rsRecords.getString(2));
+				
+				professores.add(professorObj);
+			}
+			
+			return professores;
 		}
 		catch (Exception e) {
 			e.printStackTrace();

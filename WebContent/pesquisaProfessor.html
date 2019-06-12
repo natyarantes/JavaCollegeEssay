@@ -16,16 +16,13 @@
 				</div>
 			</div>
 			<div class="row mt-5">
-				<form action="POST">
-                    <div class="form-group">
-                        <label for="">Nome da turma/Disciplina: </label><br>
-                        <input type="text" class="form-control defaultInput">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Selecione os alunos que serão vinculados à turma:</label><br>
-                        
-                    </div>
-					<button class="btn btn-primary topMaisVinte" type="submit">Cadastrar turma</button>
+				<form method="POST" action="procuraProfessor">
+					<div class="form-group">
+	                    <label for="">Digite o CPF do professor a editar:</label><br>
+	                    <input type="text" name="alunoMatricula" class="form-control defaultInput" placeholder="Digite  a matricula do professor">
+					</div>
+					
+					<button class="btn btn-primary topMaisVinte" type="submit">Buscar</button>
                 </form>
 		</div>
 

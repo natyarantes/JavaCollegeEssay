@@ -20,7 +20,6 @@
     <servlet-name>servletInsertProfessor</servlet-name>
     <url-pattern>/insereProfessor</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>servletProcuraAluno</servlet-name>
     <servlet-class>servlet.procuraAluno</servlet-class>
@@ -29,8 +28,7 @@
     <servlet-name>servletProcuraAluno</servlet-name>
     <url-pattern>/procuraAluno</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>servletEditaAluno</servlet-name>
     <servlet-class>servlet.editaAluno</servlet-class>
   </servlet>
@@ -38,6 +36,20 @@
     <servlet-name>servletEditaAluno</servlet-name>
     <url-pattern>/editaAluno</url-pattern>
   </servlet-mapping>
-  
-  
+  <servlet>
+    <servlet-name>servletCriaTipoNota</servlet-name>
+    <servlet-class>servlet.criaTipoNota</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletCriaTipoNota</servlet-name>
+    <url-pattern>/criaTipoNota</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>servletAvaliaAluno</servlet-name>
+    <servlet-class>servlet.avaliaAluno</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servletAvaliaAluno</servlet-name>
+    <url-pattern>/avaliaAluno</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -11,36 +11,35 @@ package model;
  */
 
 
-public abstract class Nota {
-	double trabalho;
-	double prova;
-	double comportamento;
+public class Nota {
+	int idNotas;
+	String tipoNota;
 	
 	public Nota() {}
-	
-	
-	public double getTrabalho() {
-		return trabalho;
+
+	public int getIdNotas() {
+		return idNotas;
 	}
-	public void setTrabalho(double trabalho) {
-		this.trabalho = trabalho;
+
+	public void setIdNotas(int idNotas) {
+		this.idNotas = idNotas;
 	}
-	public double getProva() {
-		return prova;
+
+	public String getTipoNota() {
+		return tipoNota;
 	}
-	public void setProva(double prova) {
-		this.prova = prova;
+
+	public void setTipoNota(String tipoNota) {
+		this.tipoNota = tipoNota;
 	}
-	public double getComportamento() {
-		return comportamento;
-	}
-	public void setComportamento(double comportamento) {
-		this.comportamento = comportamento;
-	}
+
 	@Override
 	public String toString() {
-		return "Nota [trabalho=" + trabalho + ", prova=" + prova + ", comportamento=" + comportamento + "]";
+		return "Nota [idNotas=" + idNotas + ", tipoNota=" + tipoNota + "]";
 	}
+	
+	
+	
 	
 	
 	

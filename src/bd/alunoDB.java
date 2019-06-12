@@ -1,6 +1,7 @@
 package bd;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import model.Aluno;
 
@@ -59,6 +60,36 @@ public class alunoDB {
 			alunoObj.setTelefone(rsRecords.getString(4));
 			
 			return alunoObj;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	//select todos os alunos
+	public ArrayList<Aluno> listAluno() {
+		
+		String strSQL;
+		
+		try {
+			strSQL = "SELECT Matricula, Nome FROM ALUNO ;";
+			ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+			
+			psComm = dbConn.prepareStatement(strSQL);
+			rsRecords = psComm.executeQuery();
+			rsRecords.next();
+			
+			while (rsRecords.next()) {
+				Aluno alunoObj = new Aluno();
+				
+				alunoObj.setMatricula(rsRecords.getString(1));
+				alunoObj.setNome(rsRecords.getString(2));
+				
+				alunos.add(alunoObj);
+			}
+			
+			return alunos;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
